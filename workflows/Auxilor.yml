@@ -1,0 +1,128 @@
+name: Auxilor
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/Auxilor.yml'
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  EcoShop:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoShop"
+      target: "bin/*"
+      name: "EcoShop"
+      java: 17
+  EcoJobs:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoJobs"
+      target: "bin/*"
+      name: "EcoJobs"
+      java: 17
+  EcoPets:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoPets"
+      target: "bin/*"
+      name: "EcoPets"
+      java: 17
+      commands: |
+        sed -i 's/R3.1.6/R3.1.8/' ./eco-core/core-plugin/build.gradle.kts
+  EcoCrates:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoCrates"
+      target: "bin/*"
+      name: "EcoCrates"
+      java: 17
+  EcoBosses:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoBosses"
+      target: "bin/*"
+      name: "EcoBosses"
+      java: 17
+      commands: |
+        sed -i 's/R3.1.6/R3.1.8/' ./eco-core/core-plugin/build.gradle.kts
+  EcoEnchants:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoEnchants"
+      target: "bin/*"
+      name: "EcoEnchants"
+      java: 17
+  EcoSkills:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoSkills"
+      target: "bin/*"
+      name: "EcoSkills"
+      java: 17
+  Reforges:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Reforges"
+      target: "bin/*"
+      name: "Reforges"
+      java: 17
+  EcoWeapons:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoWeapons"
+      target: "bin/*"
+      name: "EcoWeapons"
+      java: 17
+  Talismans:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Talismans"
+      target: "bin/*"
+      name: "Talismans"
+      java: 17
+  EcoArmor:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoArmor"
+      target: "bin/*"
+      name: "EcoArmor"
+      java: 17
+  EcoItems:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/EcoItems"
+      target: "bin/*"
+      name: "EcoItems"
+      java: 17
+  StatTrackers:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/StatTrackers"
+      target: "bin/*"
+      name: "StatTrackers"
+      java: 17
+  libreforge:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/libreforge"
+      name: "libreforge"
+      java: 17
+  Boosters:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Boosters"
+      target: "bin/*"
+      name: "Boosters"
+      java: 17
+  Actions:
+    uses: HSGamer/ConstructProjects/.github/workflows/gradle-build.yml@main
+    with:
+      repository: "Auxilor/Actions"
+      target: "bin/*"
+      name: "Actions"
+      java: 17
+      commands: |
+        sed -i 's/R2.5.0/R3.1.8/' ./eco-core/core-plugin/build.gradle.kts

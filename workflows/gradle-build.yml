@@ -1,0 +1,58 @@
+name: Gradle Build
+on:
+  workflow_call:
+    inputs:
+      repository:
+        required: true
+        type: string
+      target:
+        default: 'build/libs/*.jar'
+        required: false
+        type: string
+      name:
+        default: 'Artifact'
+        required: false
+        type: string
+      commands:
+        default: 'echo Nothing here'
+        required: false
+        type: string
+      java:
+        default: '16'
+        required: false
+        type: string
+      distribution:
+        default: 'temurin'
+        required: false
+        type: string
+      os:
+        default: 'ubuntu-latest'
+        required: false
+        type: string
+      tasks:
+        default: 'build'
+        required: false
+        type: string
+jobs:
+  build:
+    runs-on: ${{ inputs.os }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+    - name: Set up JDK
+      uses: actions/setup-java@v3.12.0
+      with:
+        java-version: ${{ inputs.java }}
+        distribution: ${{ inputs.distribution }}
+        cache: gradle
+    - name: Build with Gradle
+      run: |
+        ${{ inputs.commands }}
+        chmod +x gradlew
+        ./gradlew ${{ inputs.tasks }}
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.target }}
